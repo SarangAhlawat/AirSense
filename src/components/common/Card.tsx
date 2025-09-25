@@ -1,10 +1,10 @@
 import React from 'react'
 
-interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
+export default function Card(props: {
+  className?: string
   children?: React.ReactNode
-}
-
-export default function Card({ className = '', children, ...rest }: CardProps){
+} & React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>){
+  const { className = '', children, ...rest } = props
   return (
     <div {...rest} className={`card ${className}`.trim()}>
       {children}
