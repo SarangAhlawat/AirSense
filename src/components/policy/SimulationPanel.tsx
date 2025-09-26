@@ -9,7 +9,7 @@ export default function SimulationPanel(){
   async function run(){
     setLoading(true)
     try {
-      const res = await api.post('/simulate-intervention', { type: 'stubble_cut', value: 0.5 })
+      const res = await api.post('/policy/simulate', { hours: 24, reduce_stubble_pct: 20, reduce_traffic_pct: 10 })
       setResult(res.data)
     } finally {
       setLoading(false)
@@ -29,7 +29,7 @@ export default function SimulationPanel(){
         <div className="mt-4 text-sm text-slate-300">
           <div>Baseline: {JSON.stringify(result.baseline)}</div>
           <div>Scenario: {JSON.stringify(result.scenario)}</div>
-          <div className="mt-1">Reduction: {result.reductionPercent}%</div>
+          <div className="mt-1">Reduction: {result.reduction_percent}%</div>
         </div>
       ) : null}
     </div>

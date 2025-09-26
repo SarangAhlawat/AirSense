@@ -8,7 +8,7 @@ export function useForecast(lat?:number, lon?:number): UseQueryResult<Forecast>{
   return useQuery<Forecast>({
     queryKey: ['forecast', lat, lon],
     queryFn: async () => {
-      const r = await api.get(`/forecast?lat=${lat ?? ''}&lon=${lon ?? ''}`)
+      const r = await api.get(`/citizen/forecast?lat=${lat ?? ''}&lon=${lon ?? ''}`)
       return r.data as Forecast
     },
     enabled: true,

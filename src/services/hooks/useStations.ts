@@ -7,7 +7,7 @@ export function useStations(): UseQueryResult<Station[]> {
   return useQuery<Station[]>({
     queryKey: ['stations'],
     queryFn: async () => {
-      const r = await api.get('/stations')
+      const r = await api.get('/citizen/stations')
       return r.data as Station[]
     },
     staleTime: 5*60_000,

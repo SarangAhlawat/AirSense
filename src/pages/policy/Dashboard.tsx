@@ -11,13 +11,13 @@ type Attribution = { stubble:number; traffic:number; industry:number; dust:numbe
 export default function PolicyDashboard(){
   const { data: stations } = useQuery<Station[]>({
     queryKey: ['stations'],
-    queryFn: async () => (await api.get('/stations')).data as Station[],
+    queryFn: async () => (await api.get('/citizen/stations')).data as Station[],
     staleTime: 5*60_000,
   })
 
   const { data } = useQuery<Attribution>({
     queryKey: ['attribution'],
-    queryFn: async () => (await api.get('/attribution?lat=28.65&lon=77.2')).data as Attribution,
+    queryFn: async () => (await api.get('/policy/attribution?lat=28.65&lon=77.2')).data as Attribution,
     staleTime: 60_000,
   })
 
