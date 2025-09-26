@@ -11,7 +11,7 @@ import { motion } from 'framer-motion'
 export default function CitizenDashboard(){
   // for MVP we use fixed coords (Delhi center). Later, use geolocation.
   const lat = 28.65, lon = 77.2
-  const aqiQ = useCurrentAQI(lat, lon)
+  const aqiQ = useCurrentAQI({ lat, lon })
   const stationsQ = useStations()
   const forecastQ = useForecast(lat, lon)
 
